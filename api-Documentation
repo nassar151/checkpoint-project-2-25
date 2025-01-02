@@ -1,4 +1,7 @@
 # Admin API Documentation
+to run requests s admin you need to have username and password in our case both is admin 
+you need to chose in postman the option of basic auth and put both of them and in the backend i handled by use the spring-boot-starter-security library 
+
 
 Endpoint:  
 URL: /admin/addStudents
@@ -422,7 +425,51 @@ Body:
 This response indicates that an unexpected error occurred on the server while processing the request.  
 Description: This endpoint is used to retrieve a list of all courses along with the students enrolled in each course. The server will respond with the details of the courses and their students if the operation is successful, or an error message if an internal error occurs.
 =========================================================================================================================================================================================================================
+AuthController application api
+
+## Student Login
+
+### Endpoint
+- **URL:** `/auth/studentLogin`
+- **Method:** `POST`
+- **Content-Type:** `application/json`
+
+### Request Parameters
+- **specialKey:** The special key of the student (required).
+
+### Responses
+
+#### Success Response
+- **Status Code:** `200 OK`
+- **Content-Type:** `application/json`
+- **Body:**
+  ```json
+  {
+    "message": "Successfully logged in",
+    "sessionKey": "generated-session-key"
+  }
+
+
+Error Response
+Invalid Special Key
+Status Code: 401 Unauthorized
+Content-Type: application/json
+Body:
+{
+  "error": "Invalid special key"
+}
+Description
+This endpoint allows a student to log in using their special key. If the special key is valid, a session key is generated and returned along with a success message. If the special key is invalid, a 401 Unauthorized status is returned with an error message.
+
+
+
+
+
+
+=========================================================================================================================================================================================================================
+
 # Student API Documentation
+any request that you need to run from student application you need to send in the header the session key that you get in the login request
 
 API Endpoint: /register
 HTTP Method: POST
@@ -497,38 +544,3 @@ Description
 This endpoint cancels a student's registration from a course. It requires a valid session key to authenticate the student. If the session key is invalid, a 401 Unauthorized status is returned. If the cancellation is successful, a 200 OK status is returned with a success message. If the cancellation fails (e.g., the student is not registered for the course), a 400 Bad Request status is returned with an error message.
 
 =========================================================================================================================================================================================================================
-AuthController application api
-
-## Student Login
-
-### Endpoint
-- **URL:** `/auth/studentLogin`
-- **Method:** `POST`
-- **Content-Type:** `application/json`
-
-### Request Parameters
-- **specialKey:** The special key of the student (required).
-
-### Responses
-
-#### Success Response
-- **Status Code:** `200 OK`
-- **Content-Type:** `application/json`
-- **Body:**
-  ```json
-  {
-    "message": "Successfully logged in",
-    "sessionKey": "generated-session-key"
-  }
-
-
-Error Response
-Invalid Special Key
-Status Code: 401 Unauthorized
-Content-Type: application/json
-Body:
-{
-  "error": "Invalid special key"
-}
-Description
-This endpoint allows a student to log in using their special key. If the special key is valid, a session key is generated and returned along with a success message. If the special key is invalid, a 401 Unauthorized status is returned with an error message.
