@@ -1,5 +1,6 @@
 package com.queryexec.utilities.service;
 
+import com.queryexec.utilities.exception.StudentRegistrationException;
 import com.queryexec.utilities.model.Course;
 import com.queryexec.utilities.model.Student;
 import com.queryexec.utilities.repository.CourseRepository;
@@ -30,9 +31,21 @@ public class CourseService {
     // Method to create a new course
     public Course createCourse(Course course) {
         logger.info("Creating course with name: {}", course.getCourseName());
+        if (courseRepository.existsById(course.getId())) {
+            throw new StudentRegistrationException("Course already exists with ID: " + course.getId());
+        }
         Course savedCourse = courseRepository.save(course);
         logger.info("Course created successfully with ID: {}", savedCourse.getId());
+        logger.info("Course created/updated successfully with ID: {}", savedCourse.getId());
         return savedCourse;
+    }
+
+    public Course updateCourse(Long courseId, String courseName, String courseDescription) {
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new StudentRegistrationException("Course not found with ID: " + courseId));
+        course.setCourseName(courseName);
+        course.setCourseDescription(courseDescription);
+        return courseRepository.save(course);
     }
 
     public List<CourseWithStudentsDTO> getAllCoursesWithStudents() {

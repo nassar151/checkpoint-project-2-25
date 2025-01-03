@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a05fd1ef-78b2-4489-bf34-7afa7f03058a",
+		"_postman_id": "ea417b43-cd89-42aa-824a-95f68a712417",
 		"name": "admin/student/login request",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -39,12 +39,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:6031/admin/allStudents",
+					"raw": "http://localhost:6060/admin/allStudents",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6031",
+					"port": "6060",
 					"path": [
 						"admin",
 						"allStudents"
@@ -87,12 +87,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:6033/admin/allCourses",
+					"raw": "http://localhost:6060/admin/allCourses",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6033",
+					"port": "6060",
 					"path": [
 						"admin",
 						"allCourses"
@@ -132,12 +132,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:6069/admin/deleteCourse?courseId=234522",
+					"raw": "http://localhost:6060/admin/deleteCourse?courseId=234523",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6069",
+					"port": "6060",
 					"path": [
 						"admin",
 						"deleteCourse"
@@ -145,7 +145,7 @@
 					"query": [
 						{
 							"key": "courseId",
-							"value": "234522"
+							"value": "234523"
 						}
 					]
 				}
@@ -153,7 +153,7 @@
 			"response": []
 		},
 		{
-			"name": "admin add course Copy",
+			"name": "admin update course",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -180,15 +180,60 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"id\":\"234521\",\n  \"courseName\": \"Introduction to database\",\n  \"description\": \"A beginner course on programming data but meduim.\"\n}"
+					"raw": "{\n  \"id\":\"234523\",\n  \"courseName\": \"Introduction to database69\",\n  \"description\": \"A beginner course on programming data but meduim update.\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:6069/admin/courses",
+					"raw": "http://localhost:6060/admin/updateCourses",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6069",
+					"port": "6060",
+					"path": [
+						"admin",
+						"updateCourses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin add course",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\":\"234523\",\n  \"courseName\": \"Introduction to database6\",\n  \"description\": \"A beginner course on programming data but meduim.\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:6060/admin/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6060",
 					"path": [
 						"admin",
 						"courses"
@@ -228,12 +273,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:6069/admin/deleteRecord?studentId=88&courseId=234521",
+					"raw": "http://localhost:6060/admin/deleteRecord?studentId=9229&courseId=234521",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6069",
+					"port": "6060",
 					"path": [
 						"admin",
 						"deleteRecord"
@@ -241,7 +286,7 @@
 					"query": [
 						{
 							"key": "studentId",
-							"value": "88"
+							"value": "9229"
 						},
 						{
 							"key": "courseId",
@@ -283,12 +328,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:6069/admin/addRecord?studentId=88&courseId=234520&record=99",
+					"raw": "http://localhost:6060/admin/addRecord?studentId=9229&courseId=234521&record=99",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6069",
+					"port": "6060",
 					"path": [
 						"admin",
 						"addRecord"
@@ -296,11 +341,11 @@
 					"query": [
 						{
 							"key": "studentId",
-							"value": "88"
+							"value": "9229"
 						},
 						{
 							"key": "courseId",
-							"value": "234520"
+							"value": "234521"
 						},
 						{
 							"key": "record",
@@ -339,12 +384,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:6069/admin/readRecord?studentId=88&courseId=234521",
+					"raw": "http://localhost:6060/admin/readRecord?studentId=92295555&courseId=234523",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6069",
+					"port": "6060",
 					"path": [
 						"admin",
 						"readRecord"
@@ -352,11 +397,11 @@
 					"query": [
 						{
 							"key": "studentId",
-							"value": "88"
+							"value": "92295555"
 						},
 						{
 							"key": "courseId",
-							"value": "234521"
+							"value": "234523"
 						}
 					]
 				}
@@ -391,7 +436,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": 92295,\n    \"name\": \"bard557\",\n    \"email\": \"bard4588.doe@example.com\"\n}"
+					"raw": "{\n    \"id\": 92295555,\n    \"name\": \"bard5555558\",\n    \"email\": \"bard45555.doe@example.com\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:6060/admin/addStudents",
@@ -436,74 +481,23 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": 88,\n    \"name\": \"besan\",\n    \"email\": \"bess.doe@example.com\"\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:6069/admin/deleteCourse?studentId=88",
+					"raw": "http://localhost:6060/admin/deleteStudent?studentId=92295555",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6069",
+					"port": "6060",
 					"path": [
 						"admin",
-						"deleteCourse"
+						"deleteStudent"
 					],
 					"query": [
 						{
 							"key": "studentId",
-							"value": "88"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deleet course",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": 88,\n    \"name\": \"besan\",\n    \"email\": \"bess.doe@example.com\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:6069/admin/deleteCourse?courseId=234521",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "6069",
-					"path": [
-						"admin",
-						"deleteCourse"
-					],
-					"query": [
-						{
-							"key": "courseId",
-							"value": "234521"
+							"value": "92295555"
 						}
 					]
 				}
@@ -537,12 +531,12 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:6031/auth/studentLogin?specialKey=548f35b9-4a83-4524-83ff-758c69626a99",
+					"raw": "http://localhost:6060/auth/studentLogin?specialKey=b1fa253c-71fe-4604-9d5e-6db29d7b4d51",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6031",
+					"port": "6060",
 					"path": [
 						"auth",
 						"studentLogin"
@@ -550,7 +544,7 @@
 					"query": [
 						{
 							"key": "specialKey",
-							"value": "548f35b9-4a83-4524-83ff-758c69626a99"
+							"value": "b1fa253c-71fe-4604-9d5e-6db29d7b4d51"
 						}
 					]
 				}
@@ -579,17 +573,17 @@
 				"header": [
 					{
 						"key": "Session-Key",
-						"value": "a311c474-ba7c-43ce-b1c2-ed3b82dd3002",
+						"value": "314ea60c-5a13-4e81-92a0-4d10cc3394ae",
 						"type": "default"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:6031/students/cancelRegistration?courseId=234521",
+					"raw": "http://localhost:6060/students/cancelRegistration?courseId=234523",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6031",
+					"port": "6060",
 					"path": [
 						"students",
 						"cancelRegistration"
@@ -597,7 +591,7 @@
 					"query": [
 						{
 							"key": "courseId",
-							"value": "234521"
+							"value": "234523"
 						}
 					]
 				}
@@ -626,17 +620,17 @@
 				"header": [
 					{
 						"key": "Session-Key",
-						"value": "a311c474-ba7c-43ce-b1c2-ed3b82dd3002",
+						"value": "314ea60c-5a13-4e81-92a0-4d10cc3394ae",
 						"type": "default"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:6031/students/register?courseId=234521",
+					"raw": "http://localhost:6060/students/register?courseId=234523",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "6031",
+					"port": "6060",
 					"path": [
 						"students",
 						"register"
@@ -644,7 +638,7 @@
 					"query": [
 						{
 							"key": "courseId",
-							"value": "234521"
+							"value": "234523"
 						}
 					]
 				}

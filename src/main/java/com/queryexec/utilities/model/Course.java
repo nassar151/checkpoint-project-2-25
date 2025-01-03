@@ -37,4 +37,7 @@ public class Course {
         this.description = description;
     }
 
+    public void setCourseDescription(String courseDescription) {
+
+}
 }

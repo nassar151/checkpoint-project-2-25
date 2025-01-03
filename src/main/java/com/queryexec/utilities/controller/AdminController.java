@@ -80,6 +80,11 @@ public class AdminController {
         return courseService.createCourse(course);
     }
 
+    @PostMapping("/updateCourses")
+    public Course updateCourse(@RequestBody Course course) {
+        return courseService.updateCourse(course.getId(),course.getCourseName(),course.getDescription());
+    }
+
     @DeleteMapping("/deleteCourse")
     public String deleteCourse(@RequestParam Long courseId) {
         try {

@@ -147,16 +147,16 @@ public class StudentService {
 
     public boolean cancelRegistration(Long studentId, Long courseId) {
         logger.info("Cancelling registration for student with ID: {} from course with ID: {}", studentId, courseId);
-        Student student = studentRepository.findById(studentId)
+                Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> {
                     logger.error("Student not found with ID: {}", studentId);
-                    return new RuntimeException("Student not found");
-                });
+                    throw new StudentRegistrationException("Student not found with id "+studentId);});
+
 
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> {
                     logger.error("Course not found with ID: {}", courseId);
-                    return new RuntimeException("Course not found");
+                    throw new StudentRegistrationException("Course not found with id " +courseId);
                 });
 
         Enrollment enrollment = enrollmentRepository.findByStudentIdAndCourseId(studentId, courseId);

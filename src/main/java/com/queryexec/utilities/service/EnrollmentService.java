@@ -83,12 +83,9 @@ public class EnrollmentService {
         Enrollment enrollment = enrollmentRepository.findByStudentIdAndCourseId(studentId, courseId);
 
         if (enrollment == null) {
-            // Create a new enrollment if not found
-            logger.info("Enrollment not found, creating new enrollment");
-            enrollment = new Enrollment();
-            enrollment.setStudent(student);
-            enrollment.setCourse(course);
-            enrollment.setRecord(record);
+            logger.error("student not registerd to course with ID: {}", courseId);
+            throw new StudentRegistrationException("student not registerd to course with ID:" +courseId);
+
         } else {
             // Update the record if enrollment exists
             logger.info("Enrollment found, updating record");

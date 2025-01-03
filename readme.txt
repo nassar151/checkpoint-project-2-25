@@ -10,7 +10,7 @@ Check the value of server.port. For example, if it is set to 6060, you will use 
 
 
 Run the application:  
-Use the command mvn spring-boot:run in your IDE (IntelliJ IDEA) or your local terminal.
+Use the command ./mvnw spring-boot:run in your IDE (IntelliJ IDEA) or your local terminal.
 
 
 Set up Postman:
