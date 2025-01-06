@@ -7,6 +7,7 @@ import com.queryexec.utilities.model.Student;
 import com.queryexec.utilities.repository.CourseRepository;
 import com.queryexec.utilities.repository.EnrollmentRepository;
 import com.queryexec.utilities.repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,10 +61,16 @@ public class StudentService {
         return savedStudent;
     }
 
+    @Transactional
     public void deleteStudent(Long studentId) {
-        logger.info("Deleting student with ID: {}", studentId);
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new StudentRegistrationException("Student not found with ID: " + studentId));
+
+        // Delete all enrollments associated with the student
+        enrollmentRepository.deleteByStudentId(studentId);
+
+        // Delete the student
         studentRepository.deleteById(studentId);
-        logger.info("Student deleted successfully with ID: {}", studentId);
     }
 
     public Student findBySpecialKey(String specialKey) {

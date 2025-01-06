@@ -6,6 +6,7 @@ import com.queryexec.utilities.model.Student;
 import com.queryexec.utilities.repository.CourseRepository;
 import com.queryexec.utilities.repository.EnrollmentRepository;
 import com.queryexec.utilities.repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,12 +91,17 @@ public class CourseService {
 
 
 
+    @Transactional
     public void deleteCourse(Long courseId) {
-        courseRepository.findById(courseId)
-                .orElseThrow(() -> new RuntimeException("Course not found with ID: " + courseId));
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new StudentRegistrationException("Course not found with ID: " + courseId));
+
+        // Delete all enrollments associated with the course
+        enrollmentRepository.deleteByCourseId(courseId);
+
+        // Delete the course
         courseRepository.deleteById(courseId);
     }
-
 
 
 }
