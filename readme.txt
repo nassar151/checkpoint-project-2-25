@@ -6,11 +6,13 @@ Run the script located in the file script database. This script will create the 
 
 Check the server port:  
 Open the file checkpointApplication/src/main/resources/application.yml.
-Check the value of server.port. For example, if it is set to 6060, you will use this port in your Postman calls.
+Check the value of server.port. For example, if it is set to 6031, you will use this port in your Postman calls.
 
 
 Run the application:  
-Use the command ./mvnw spring-boot:run in your IDE (IntelliJ IDEA) or your local terminal.
+Use the command mvn spring-boot:run in your IDE (IntelliJ IDEA) or your local terminal.
+
+Or you can use the command ./mvnw spring-boot:run in your IDE (IntelliJ IDEA) or your local terminal.
 
 
 Set up Postman:
